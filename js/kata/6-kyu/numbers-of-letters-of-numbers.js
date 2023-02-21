@@ -14,6 +14,44 @@ numbersOfLetters(60) --> ["sixzero", "seven", "five", "four"]
 numbersOfLetters(1) --> ["one", "three", "five", "four"] */
 
 function numbersOfLetters(integer) {
-    // your code here
+  let stringInt = integer.toString();
+  let pathArr = [];
+  let arrayOfStringInts = [];
+  let writtenNumberArr = [];
+  while (stringInt.length > 1) {
+    arrayOfStringInts = stringInt.split('');
+    writtenNumberArr = arrayOfStringInts.map(writeOutNumber);
+    pathArr.push(writtenNumberArr.join(''));
+    stringInt = pathArr[pathArr.length - 1].length.toString();
   };
-
+  do {
+    pathArr.push(writeOutNumber(stringInt));
+    stringInt = pathArr[pathArr.length - 1].length.toString();
+  } while (pathArr[pathArr.length - 1] !== writeOutNumber(stringInt));
+  return pathArr;
+};
+function writeOutNumber(stringNumber) {
+  switch (stringNumber) {
+    case '0':
+      return 'zero';
+    case '1':
+      return 'one';
+    case '2':
+      return 'two';
+    case '3':
+      return 'three';
+    case '4':
+      return 'four';
+    case '5':
+      return 'five';
+    case '6':
+      return 'six';
+    case '7':
+      return 'seven';
+    case '8':
+      return 'eight';
+    case '9':
+      return 'nine';
+  };
+}
+numbersOfLetters(11);
